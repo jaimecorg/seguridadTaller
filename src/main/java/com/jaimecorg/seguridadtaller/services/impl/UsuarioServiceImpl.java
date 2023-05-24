@@ -26,13 +26,13 @@ public class UsuarioServiceImpl implements UsuarioService{
         if(findById != null){
             return findById.get();
         }
+        
         return null;
     }
 
     @Override
     public Usuario save(Usuario usuario) {
         return repository.save(usuario);
-
     }
 
     @Override
