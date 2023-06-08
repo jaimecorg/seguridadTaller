@@ -15,4 +15,5 @@ public interface UsuarioService {
     public void update(int id, Usuario usuario);
     public void deleteById(int id);
     public void deleteAll();
+    public Usuario findByNombre(String username);
 }

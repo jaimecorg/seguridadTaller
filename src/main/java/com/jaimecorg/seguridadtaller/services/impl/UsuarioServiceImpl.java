@@ -51,5 +51,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void deleteAll() {
         repository.deleteAll();
     }
-    
+
+    @Override
+    public Usuario findByNombre(String username) {
+        return repository.findByNombre(username);
+
+    } 
 }
