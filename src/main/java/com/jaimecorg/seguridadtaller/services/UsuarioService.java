@@ -12,7 +12,7 @@ public interface UsuarioService {
     public List<Usuario> findAll();
     public Usuario findById(int id);
     public Usuario save(Usuario usuario);
-    public void update(int id, Usuario usuario);
+    public Usuario update(int id, Usuario usuario);
     public void deleteById(int id);
     public void deleteAll();
     public Usuario findByNombre(String username);

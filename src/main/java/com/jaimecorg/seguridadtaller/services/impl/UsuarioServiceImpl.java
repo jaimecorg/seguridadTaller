@@ -41,22 +41,15 @@ public class UsuarioServiceImpl implements UsuarioService{
         return repository.save(usuario);
     }
 
-    /* @Override
-    public void update(int id, Usuario usuario) {
-        this.findById(id);
-        usuario.setCodigo(id);
-        repository.save(usuario);
-    } */
-
-    @Override
-    public void update(int id, Usuario usuario) {
-        usuario.setCodigo(id);
-
+    public Usuario update(int id, Usuario user) {
+        
+        Usuario usuario = getUser(id);
+        
         List<Permiso> permisos = permisoService.findAll();
 
-
-        for(Permiso permiso :  usuario.getPermisos()) {
-
+        for(Permiso permiso :  user.getPermisos()) {
+            
+            //Permiso per = permisosService.getPermiso(permiso.getCodigo());
 
             int posicion = permisos.indexOf(permiso);
             Permiso per = permisos.get(posicion);
@@ -64,9 +57,14 @@ public class UsuarioServiceImpl implements UsuarioService{
             permiso.setDescripcion(per.getDescripcion());
         }
 
-        usuario.setCodigo(id);
+        user.setCodigo(id);
+        user.setPassword(usuario.getPassword());
 
-        repository.save(usuario);
+        return repository.save(user);
+    }
+
+    public Usuario getUser(int userId) {
+        return repository.findById(userId).orElse(null);
     }
 
     @Override
